@@ -40,27 +40,39 @@ namespace Examen3
 
         public List<Pizzas> GetByName(string name, int pageNumber = 1)
         {
-            var result = new List<Pizzas>();
-            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["Capacity"], 10);
             
-            if (name != null)
+            var result = new List<Pizzas>();
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["CapacityOfView"], 10);
+            
+            if (name != null && name != "")
             {
+                //comentado la implementación sin linq.
+                /*Pizzas pizza = null;
+                foreach (var item in _context.Pizzas)
+                {
+                    if (item.PizzasName.Equals(name))
+                    {
+                        pizza = item;
+                    }
+                }
+                result.Add(pizza);*/
+
                 try
                 {
                     var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzasName == name);
+                    if (pizza == null) throw new Exception("No se ha encontrado la pizza");
                     result.Add(pizza);                
                     return result;
                 }
                 catch(Exception ex)
                 {
                     throw new Exception("No se ha encontrado la pizza");
-                }
-                
-            }            
-            result = PaginedPizzas(pageNumber, pageSize,_context.Pizzas.ToList());
+                }                
+            }
+            result = PaginedPizzas(pageNumber, pageSize, _context.Pizzas.ToList());
             return result;
         }
-
+        
         public List<Pizzas> PaginedPizzas(int pageNumber, int pageSize, List<Pizzas> pizzas)
         {
             var result = new List<Pizzas>();
@@ -68,11 +80,11 @@ namespace Examen3
             {
                 return pizzas;
             }
-            for(var i = pageNumber*pageSize; i < pageSize * (pageNumber + 1); i++)
+            for(var i = (pageNumber-1)*pageSize; i < pageSize * pageNumber; i++)
             {
                 result.Add(pizzas[i]);
             }
-            return pizzas;
+            return result;
         }
 
         public void Update(Pizzas entity)

@@ -13,7 +13,7 @@ namespace Examen3
         /*Necesitamos un método que busque por nombre y si no hay nombre entonces que me devuelva
             una lista con las primeras 15 que haya.*/
 
-        List<Pizzas> GetByName(string name);
+        List<Pizzas> GetByName(string name, int pageNumber);
 
         
          

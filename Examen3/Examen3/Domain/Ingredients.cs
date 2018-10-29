@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Examen3
 {
-    
+
 
     public class Ingredients
     {
@@ -19,9 +19,11 @@ namespace Examen3
         [Required]
         public decimal IngredientsPrice { get; set; }
 
-        [ForeignKey("IngredientsId")]
-        public virtual ICollection<Pizzas>  PizzaLinks { get; set; }
+        [Required]
+        [CustomValidation(typeof(GreaterThanOne), "ValidationCantity")]
+        public decimal IngredientsCantity { get; set; }
 
-        
+        [ForeignKey("IngredientsId")]
+        public virtual ICollection<Pizzas> PizzaLinks { get; set; }
     }
 }

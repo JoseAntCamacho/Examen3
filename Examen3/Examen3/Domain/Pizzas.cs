@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Examen3
 {
@@ -19,15 +20,29 @@ namespace Examen3
         public virtual ICollection<Ingredients> IngredientsLinks { get; set; }
 
 
-        public decimal CalculatePrice()
+        // método que calcula el precio de la pizza antes del ejercicio 4.
+        /*public decimal CalculatePrice()
         {
+            decimal profit = Convert.ToDecimal(ConfigurationManager.AppSettings["Profits"]);
             decimal value = 0;
             foreach(var item in IngredientsLinks)
             {
                 value += item.IngredientsPrice;
             }
-            return value;
+            return value*profit;
+        }*/
+
+        public decimal CalculatePrice()
+        {
+            decimal profit = Convert.ToDecimal(ConfigurationManager.AppSettings["Profits"]);
+            decimal value = 0;
+            foreach (var item in IngredientsLinks)
+            {
+                value += item.IngredientsPrice*item.IngredientsCantity;
+            }
+            return value * profit;
         }
+
 
     }
 }
