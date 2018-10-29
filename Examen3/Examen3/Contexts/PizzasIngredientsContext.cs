@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace Examen3
 {
 
-    public interface IPizzasIngredientsContext
+    public interface IUnitOfWork
     {
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<int> SaveChangesAsync();
     }
 
-    public class PizzasIngredientsContext : DbContext, IPizzasIngredientsContext
+    public class PizzasIngredientsContext : DbContext, IUnitOfWork
     {
         public PizzasIngredientsContext() : base("name=Examen3")
         {

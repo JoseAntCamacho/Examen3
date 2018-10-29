@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,7 +58,7 @@
     <Compile Include="Domain\Pizzas.cs" />
     <Compile Include="Domain\PizzasIngredients.cs" />
     <Compile Include="Infrastructure\IngredientsRepository.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Infrastructure\PizzasRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />

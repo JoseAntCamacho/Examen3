@@ -11,11 +11,13 @@ namespace Examen3
     {
         static void Main(string[] args)
         {
-            var Pizza = new Pizzas();
-            
-            var price = Pizza.IngredientsLinks.Sum(c => c.IngredientsPrice); 
+            //var Pizza = new Pizzas();
+            //var profit = ConfigurationManager.AppSettings["Profits"];
+            //var price = Pizza.IngredientsLinks.Sum(c => c.IngredientsPrice);
 
-            List <Pizzas> lista = new List<Pizzas>()
+            
+
+            /*List <Pizzas> lista = new List<Pizzas>()
             {
                 new Pizzas { PizzasName = "carbonara"},
                 new Pizzas { PizzasName = "cuatroquesos"},
@@ -38,14 +40,18 @@ namespace Examen3
             lista[0].IngredientsLinks = ingredientes;
             lista[1].IngredientsLinks = ingredientes2;
 
+            
 
-            /*using(var db = new PizzasIngredientsContext())
+            using(var db = new PizzasIngredientsContext())
             {
-                foreach(var item in lista)
+                var pizzaRepository = new PizzasRepository(db);
+                foreach (var item in lista)
                 {
                     db.Pizzas.Add(item);
+                    
                 }
-                db.SaveChanges();
+
+            db.SaveChanges();
             }*/
 
 

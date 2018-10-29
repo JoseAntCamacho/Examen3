@@ -10,6 +10,7 @@ namespace Examen3
     public interface IRepository<T> : IRepositoryAdd<T>, IRepositoryDelete<T>, IRepositoryUpdate<T> where T : class
     {
         T GetById(Guid id);
+        Task<T> GetByIdAsync(Guid id);
     }
 
     public interface IRepositoryAdd<T> where T : class

@@ -18,5 +18,16 @@ namespace Examen3
         [ForeignKey("PizzasId")]
         public virtual ICollection<Ingredients> IngredientsLinks { get; set; }
 
+
+        public decimal CalculatePrice()
+        {
+            decimal value = 0;
+            foreach(var item in IngredientsLinks)
+            {
+                value += item.IngredientsPrice;
+            }
+            return value;
+        }
+
     }
 }

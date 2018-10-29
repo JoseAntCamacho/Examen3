@@ -13,7 +13,7 @@ namespace Examen3
 
         public IngredientsRepository(PizzasIngredientsContext context)
         {
-            this._context = context;
+            this._context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public void Add(Ingredients entity)
@@ -31,9 +31,29 @@ namespace Examen3
             return _context.Ingredients.Find(id);
         }
 
+        public Task<Ingredients> GetByIdAsync(Guid id)
+        {
+            return _context.Ingredients.FindAsync(id);
+        }
+
         public void Update(Ingredients entity)
         {
-            //
+            var result = _context.Ingredients.SingleOrDefault(b => b.IngredientsId == entity.IngredientsId);
+
+            if (result != null)
+            {
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(entity);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("No se ha encontrado la pizza que quiere actualizar");
+                }
+            }
         }
+
+        
+
     }
 }
