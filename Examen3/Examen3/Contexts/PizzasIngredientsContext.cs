@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Examen3
 {
-
-    public interface IUnitOfWork
+    // es disposable.
+    public interface IUnitOfWork : IDisposable
     {
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
@@ -26,7 +26,7 @@ namespace Examen3
         public DbSet<Ingredients> Ingredients { get; set; }
 
 
-
+        // este método no sirve para nada aquí.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

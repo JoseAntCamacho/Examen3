@@ -15,7 +15,8 @@ namespace Examen3
 
         List<Pizzas> GetByName(string name, int pageNumber);
 
-        
+        // Aquí tendrías que haber metido los dbset porque así podemos crear los constructores
+        // del IPizzasRepository.
          
         //IEnumerable<Pizzas> toList(int capacity, Expression<Func<string,bool>> expression);
 

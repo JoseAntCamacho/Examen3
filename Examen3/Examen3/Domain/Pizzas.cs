@@ -20,6 +20,7 @@ namespace Examen3
         public virtual ICollection<Ingredients> IngredientsLinks { get; set; }
 
 
+        // Tenemos un commit para el versionado.
         // método que calcula el precio de la pizza antes del ejercicio 4.
         /*public decimal CalculatePrice()
         {
@@ -36,6 +37,8 @@ namespace Examen3
         {
             decimal profit = Convert.ToDecimal(ConfigurationManager.AppSettings["Profits"]);
             decimal value = 0;
+            // usa el .sum(c=> c.price) así me da la suma completa hijo!
+
             foreach (var item in IngredientsLinks)
             {
                 value += item.IngredientsPrice*item.IngredientsCantity;

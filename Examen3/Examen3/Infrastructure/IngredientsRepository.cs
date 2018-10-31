@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 
 namespace Examen3
 {
+    // el repositorio no tiene que comprobar que si está o no está la entidad...
+    // solo tiene que hacerlo.
     public class IngredientsRepository : IIngredientsRepository
     {
         private PizzasIngredientsContext _context;
+
+        // aquí rompes el SOLID... no trabajes con clases, trabaja con interfaces.
 
         public IngredientsRepository(PizzasIngredientsContext context)
         {
@@ -36,14 +40,14 @@ namespace Examen3
             return _context.Ingredients.FindAsync(id);
         }
 
-        public void Update(Ingredients entity)
+        public void Update(Ingredients entity) // este está mal hecho.
         {
             var result = _context.Ingredients.SingleOrDefault(b => b.IngredientsId == entity.IngredientsId);
 
             if (result != null)
             {
                 try
-                {
+                {// solo hay que poner esta línea.
                     _context.Entry(result).CurrentValues.SetValues(entity);
                 }
                 catch (Exception ex)

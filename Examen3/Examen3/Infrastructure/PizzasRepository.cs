@@ -105,5 +105,22 @@ namespace Examen3
         }
     }
 
-    
+    // cómo se debería hacer el ejercicio 3. Esto debería estar en el dominio porque es lo que pide
+    // el cliente.
+    public class PizzaFilter
+    {
+        public static Func<Pizzas, bool> FindByName (string name)
+        {
+            Func<Pizzas, bool> result = (p) => (p.PizzasName.Contains(name) || name == null);
+            return result;
+        }
+
+        // y entonces podríamos hacer...
+        //  _context.Pizzas.Where(PizzaFilter.FindByName(""));
+        // si lo queremos paginar usa los métodos que ya existen...
+        // _context.Pizzas.Where(PizzaFilter.FindByName("")).Skip((page - 1) * pageSize).Take(pageSize);
+
+    }
+
+
 }
