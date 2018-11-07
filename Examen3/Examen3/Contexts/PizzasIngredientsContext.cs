@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
+using PagedList;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,14 +26,12 @@ namespace Examen3
         }
         public DbSet<Pizzas> Pizzas { get; set; }
         public DbSet<Ingredients> Ingredients { get; set; }
+        public DbSet<PizzasIngredientsQuantity> pizzasIngredientsQuantities { get; set; }
 
-
-        // este método no sirve para nada aquí.
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public IEnumerable<Pizzas> toList(int page, int capacity, Expression<Func<Pizzas, bool>> expression)
         {
-            base.OnModelCreating(modelBuilder);
+            return this.Pizzas.Where(expression).ToPagedList(page, capacity);
         }
 
-        
     }
 }

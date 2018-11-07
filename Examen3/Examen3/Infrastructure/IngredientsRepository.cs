@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -38,6 +39,11 @@ namespace Examen3
         public Task<Ingredients> GetByIdAsync(Guid id)
         {
             return _context.Ingredients.FindAsync(id);
+        }
+
+        public IEnumerable<Pizzas> toList(int page, int capacity, Expression<Func<Pizzas, bool>> expression)
+        {
+            return _context.Pizzas.Where(expression).ToPagedList(page, capacity);
         }
 
         public void Update(Ingredients entity) // este está mal hecho.

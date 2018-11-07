@@ -39,6 +39,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -69,6 +72,10 @@
     <Compile Include="Migrations\201810292216314_AddCantityInIngredients.Designer.cs">
       <DependentUpon>201810292216314_AddCantityInIngredients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811071849004_CreacionPizzaQuantity.cs" />
+    <Compile Include="Migrations\201811071849004_CreacionPizzaQuantity.Designer.cs">
+      <DependentUpon>201811071849004_CreacionPizzaQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810292216314_AddCantityInIngredients.resx">
       <DependentUpon>201810292216314_AddCantityInIngredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071849004_CreacionPizzaQuantity.resx">
+      <DependentUpon>201811071849004_CreacionPizzaQuantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

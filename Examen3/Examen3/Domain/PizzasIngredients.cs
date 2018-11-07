@@ -18,8 +18,21 @@ namespace Examen3
         [Column(Order = 1)]
         public Guid IngredientsId { get; set; }
 
+        
+
         public virtual Pizzas Pizzas { get; set; }
         public virtual Ingredients Ingredients { get; set; }
 
+    }
+
+    public class PizzasIngredientsQuantity
+    {
+        public Guid Id { get; set; }
+
+        [Required]
+        public decimal Quantity { get; set; }
+
+        public Pizzas Pizzas { get; set; }
+        public Ingredients Ingredients { get; set; }
     }
 }
